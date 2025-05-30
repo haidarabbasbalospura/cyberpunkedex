@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberPunkédex | Complete Pokémon Encyclopedia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Cyberpunkedex" />
+    <link rel="manifest" href="/site.webmanifest" />
     <style>
         * {
             margin: 0;
@@ -45,7 +54,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 30px 30px;
@@ -119,11 +128,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: conic-gradient(
-                transparent, 
-                var(--neon-blue), 
-                transparent
-            );
+            background: conic-gradient(transparent,
+                    var(--neon-blue),
+                    transparent);
             border-radius: 50%;
             animation: rotate 5s linear infinite;
         }
@@ -254,7 +261,8 @@
             white-space: nowrap;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: rgba(0, 255, 255, 0.15);
             color: white;
             border-color: var(--neon-pink);
@@ -306,7 +314,8 @@
             box-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
         }
 
-        .gen-btn:hover, .gen-btn.active {
+        .gen-btn:hover,
+        .gen-btn.active {
             background: rgba(188, 19, 254, 0.2);
             color: white;
             transform: translateY(-3px);
@@ -453,7 +462,9 @@
             color: #c0c0ff;
         }
 
-        .pokemon-gen, .pokemon-height, .pokemon-weight {
+        .pokemon-gen,
+        .pokemon-height,
+        .pokemon-weight {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -466,24 +477,113 @@
         }
 
         /* Type colors with cyberpunk neon */
-        .normal { color: #a8a878; border-color: #a8a878; box-shadow: 0 0 8px #a8a878; }
-        .fire { color: #f08030; border-color: #f08030; box-shadow: 0 0 8px #f08030; }
-        .water { color: #6890f0; border-color: #6890f0; box-shadow: 0 0 8px #6890f0; }
-        .electric { color: #f8d030; border-color: #f8d030; box-shadow: 0 0 8px #f8d030; }
-        .grass { color: #78c850; border-color: #78c850; box-shadow: 0 0 8px #78c850; }
-        .ice { color: #98d8d8; border-color: #98d8d8; box-shadow: 0 0 8px #98d8d8; }
-        .fighting { color: #c03028; border-color: #c03028; box-shadow: 0 0 8px #c03028; }
-        .poison { color: #a040a0; border-color: #a040a0; box-shadow: 0 0 8px #a040a0; }
-        .ground { color: #e0c068; border-color: #e0c068; box-shadow: 0 0 8px #e0c068; }
-        .flying { color: #a890f0; border-color: #a890f0; box-shadow: 0 0 8px #a890f0; }
-        .psychic { color: #f85888; border-color: #f85888; box-shadow: 0 0 8px #f85888; }
-        .bug { color: #a8b820; border-color: #a8b820; box-shadow: 0 0 8px #a8b820; }
-        .rock { color: #b8a038; border-color: #b8a038; box-shadow: 0 0 8px #b8a038; }
-        .ghost { color: #705898; border-color: #705898; box-shadow: 0 0 8px #705898; }
-        .dragon { color: #7038f8; border-color: #7038f8; box-shadow: 0 0 8px #7038f8; }
-        .dark { color: #705848; border-color: #705848; box-shadow: 0 0 8px #705848; }
-        .steel { color: #b8b8d0; border-color: #b8b8d0; box-shadow: 0 0 8px #b8b8d0; }
-        .fairy { color: #ee99ac; border-color: #ee99ac; box-shadow: 0 0 8px #ee99ac; }
+        .normal {
+            color: #a8a878;
+            border-color: #a8a878;
+            box-shadow: 0 0 8px #a8a878;
+        }
+
+        .fire {
+            color: #f08030;
+            border-color: #f08030;
+            box-shadow: 0 0 8px #f08030;
+        }
+
+        .water {
+            color: #6890f0;
+            border-color: #6890f0;
+            box-shadow: 0 0 8px #6890f0;
+        }
+
+        .electric {
+            color: #f8d030;
+            border-color: #f8d030;
+            box-shadow: 0 0 8px #f8d030;
+        }
+
+        .grass {
+            color: #78c850;
+            border-color: #78c850;
+            box-shadow: 0 0 8px #78c850;
+        }
+
+        .ice {
+            color: #98d8d8;
+            border-color: #98d8d8;
+            box-shadow: 0 0 8px #98d8d8;
+        }
+
+        .fighting {
+            color: #c03028;
+            border-color: #c03028;
+            box-shadow: 0 0 8px #c03028;
+        }
+
+        .poison {
+            color: #a040a0;
+            border-color: #a040a0;
+            box-shadow: 0 0 8px #a040a0;
+        }
+
+        .ground {
+            color: #e0c068;
+            border-color: #e0c068;
+            box-shadow: 0 0 8px #e0c068;
+        }
+
+        .flying {
+            color: #a890f0;
+            border-color: #a890f0;
+            box-shadow: 0 0 8px #a890f0;
+        }
+
+        .psychic {
+            color: #f85888;
+            border-color: #f85888;
+            box-shadow: 0 0 8px #f85888;
+        }
+
+        .bug {
+            color: #a8b820;
+            border-color: #a8b820;
+            box-shadow: 0 0 8px #a8b820;
+        }
+
+        .rock {
+            color: #b8a038;
+            border-color: #b8a038;
+            box-shadow: 0 0 8px #b8a038;
+        }
+
+        .ghost {
+            color: #705898;
+            border-color: #705898;
+            box-shadow: 0 0 8px #705898;
+        }
+
+        .dragon {
+            color: #7038f8;
+            border-color: #7038f8;
+            box-shadow: 0 0 8px #7038f8;
+        }
+
+        .dark {
+            color: #705848;
+            border-color: #705848;
+            box-shadow: 0 0 8px #705848;
+        }
+
+        .steel {
+            color: #b8b8d0;
+            border-color: #b8b8d0;
+            box-shadow: 0 0 8px #b8b8d0;
+        }
+
+        .fairy {
+            color: #ee99ac;
+            border-color: #ee99ac;
+            box-shadow: 0 0 8px #ee99ac;
+        }
 
         /* Detailed View Modal */
         .detail-modal {
@@ -752,7 +852,8 @@
             font-size: 1rem;
         }
 
-        .page-btn:hover, .page-btn.active {
+        .page-btn:hover,
+        .page-btn.active {
             background: rgba(0, 255, 255, 0.15);
             color: white;
             border-color: var(--neon-pink);
@@ -761,27 +862,59 @@
 
         /* Animations */
         @keyframes pulse {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes scan {
-            0% { background-position: 0px 0px; }
-            100% { background-position: 0px 100vh; }
+            0% {
+                background-position: 0px 0px;
+            }
+
+            100% {
+                background-position: 0px 100vh;
+            }
         }
 
         @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
         }
 
         /* Glitch effect on hover */
@@ -794,7 +927,7 @@
             .interface {
                 grid-template-columns: 1fr;
             }
-            
+
             .filters {
                 justify-content: center;
             }
@@ -804,30 +937,30 @@
             h1 {
                 font-size: 2.5rem;
             }
-            
+
             .pokemon-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
-            
+
             .pokemon-name {
                 font-size: 1.2rem;
             }
-            
+
             .pokemon-image {
                 width: 100px;
                 height: 100px;
             }
-            
+
             .stats-bar {
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
             }
-            
+
             .detail-header {
                 flex-direction: column;
             }
-            
+
             .modal-content {
                 padding: 20px 15px;
             }
@@ -837,30 +970,30 @@
             h1 {
                 font-size: 2rem;
             }
-            
+
             .logo {
                 width: 80px;
                 height: 80px;
             }
-            
+
             .logo i {
                 font-size: 35px;
             }
-            
+
             .pokemon-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
-            
+
             .filter-btn {
                 padding: 10px 15px;
                 font-size: 0.8rem;
             }
-            
+
             .gen-btn {
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
-            
+
             .detail-type {
                 padding: 8px 15px;
                 font-size: 0.9rem;
@@ -868,10 +1001,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="scanlines"></div>
     <div class="terminal-glow"></div>
-    
+
     <div class="container">
         <header>
             <div class="logo">
@@ -879,7 +1013,7 @@
             </div>
             <h1>CyberPunkédex</h1>
             <p class="subtitle">Neural interface activated. Accessing complete Pokémon database. Decrypting files...</p>
-            
+
             <div class="stats-bar">
                 <div class="stat-item">
                     <i class="fas fa-database"></i>
@@ -894,13 +1028,13 @@
                     <span>Types: 18</span>
                 </div>
             </div>
-            
+
             <div class="interface">
                 <div class="search-container">
                     <i class="fas fa-terminal search-icon"></i>
                     <input type="text" id="search" placeholder="ENTER POKÉMON NAME OR ID...">
                 </div>
-                
+
                 <div class="filters">
                     <button class="filter-btn active" data-filter="all">
                         <i class="fas fa-globe"></i> All Types
@@ -916,7 +1050,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="generation-selector">
                 <button class="gen-btn active" data-gen="all">All Generations</button>
                 <button class="gen-btn" data-gen="1">Gen 1</button>
@@ -930,19 +1064,19 @@
                 <button class="gen-btn" data-gen="9">Gen 9</button>
             </div>
         </header>
-        
+
         <main>
             <div class="pokemon-grid" id="pokemon-container">
                 <!-- Pokémon cards will be generated here -->
             </div>
-            
+
             <div class="pagination">
                 <button class="page-btn" id="prev-btn"><i class="fas fa-chevron-left"></i> Previous</button>
                 <span class="page-btn active">Page 1 of 52</span>
                 <button class="page-btn" id="next-btn">Next <i class="fas fa-chevron-right"></i></button>
             </div>
         </main>
-        
+
         <footer>
             <p>SYSTEM STATUS: ONLINE | CYBERPUNKÉDEX v3.8.2 | © 2077 NEOTOKYO NETWORKS</p>
         </footer>
@@ -969,29 +1103,29 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="detail-section">
                 <h3 class="section-title">DESCRIPTION</h3>
                 <p class="detail-text" id="detail-description">
-                    When several of these Pokémon gather, their electricity could build and cause lightning storms. 
+                    When several of these Pokémon gather, their electricity could build and cause lightning storms.
                     It is classified as a Mouse Pokémon. Pikachu is an Electric type Pokémon introduced in Generation 1.
                 </p>
             </div>
-            
+
             <div class="detail-section">
                 <h3 class="section-title">EVOLUTION CHAIN</h3>
                 <div class="evolution-chain" id="evolution-chain">
                     <!-- Evolution chain will be inserted here -->
                 </div>
             </div>
-            
+
             <div class="detail-section">
                 <h3 class="section-title">ABILITIES</h3>
                 <div class="abilities" id="abilities">
                     <!-- Abilities will be inserted here -->
                 </div>
             </div>
-            
+
             <div class="detail-section">
                 <h3 class="section-title">KNOWN MOVES</h3>
                 <div class="moves-list" id="moves-list">
@@ -1075,7 +1209,7 @@
         //         moves: ["Psychic", "Shadow Ball", "Aura Sphere", "Recover", "Psystrike"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 2
         //     {
         //         id: 248,
@@ -1101,7 +1235,7 @@
         //             {id: 248, name: "Tyranitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"}
         //         ]
         //     },
-            
+
         //     // Generation 3
         //     {
         //         id: 384,
@@ -1123,7 +1257,7 @@
         //         moves: ["Dragon Ascent", "Outrage", "Hyper Beam", "Extreme Speed", "Dragon Pulse"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 4
         //     {
         //         id: 483,
@@ -1145,7 +1279,7 @@
         //         moves: ["Roar of Time", "Dragon Claw", "Earth Power", "Flash Cannon", "Aura Sphere"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 5
         //     {
         //         id: 646,
@@ -1167,7 +1301,7 @@
         //         moves: ["Ice Burn", "Freeze Shock", "Dragon Pulse", "Ice Beam", "Outrage"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 6
         //     {
         //         id: 716,
@@ -1189,7 +1323,7 @@
         //         moves: ["Geomancy", "Moonblast", "Megahorn", "Close Combat", "Focus Blast"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 7
         //     {
         //         id: 800,
@@ -1211,7 +1345,7 @@
         //         moves: ["Prismatic Laser", "Photon Geyser", "Power Gem", "Stealth Rock", "Heat Wave"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 8
         //     {
         //         id: 888,
@@ -1233,7 +1367,7 @@
         //         moves: ["Behemoth Blade", "Play Rough", "Sacred Sword", "Iron Head", "Swords Dance"],
         //         evolution: []
         //     },
-            
+
         //     // Generation 9
         //     {
         //         id: 1006,
@@ -1276,7 +1410,7 @@
         // Render Pokémon cards
         function renderPokemon(pokemonList) {
             pokemonContainer.innerHTML = '';
-            
+
             if (pokemonList.length === 0) {
                 pokemonContainer.innerHTML = `
                     <div class="no-results">
@@ -1287,20 +1421,20 @@
                 `;
                 return;
             }
-            
+
             // Apply pagination
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
             const pagePokemon = pokemonList.slice(startIndex, endIndex);
-            
+
             pagePokemon.forEach(pokemon => {
                 const card = document.createElement('div');
                 card.className = 'pokemon-card';
                 card.dataset.id = pokemon.id;
-                
+
                 // Generate image URL based on Pokémon ID
                 const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
-                
+
                 card.innerHTML = `
                     <div class="card-header">
                         <span class="pokemon-id">#${String(pokemon.id).padStart(3, '0')}</span>
@@ -1327,17 +1461,17 @@
                         </div>
                     </div>
                 `;
-                
+
                 // Add click event to show detailed view
                 card.addEventListener('click', () => {
                     showPokemonDetail(pokemon);
                 });
-                
+
                 pokemonContainer.appendChild(card);
             });
-            
+
             // Update pagination display
-            document.querySelector('.pagination .active').textContent = 
+            document.querySelector('.pagination .active').textContent =
                 `Page ${currentPage} of ${Math.ceil(pokemonList.length / itemsPerPage)}`;
         }
 
@@ -1352,12 +1486,12 @@
             const evolutionChain = document.getElementById('evolution-chain');
             const abilities = document.getElementById('abilities');
             const movesList = document.getElementById('moves-list');
-            
+
             // Set basic info
             detailImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
             detailName.textContent = pokemon.name;
             detailId.textContent = `#${String(pokemon.id).padStart(4, '0')}`;
-            
+
             // Set types
             detailTypes.innerHTML = '';
             pokemon.types.forEach(type => {
@@ -1366,7 +1500,7 @@
                 typeEl.textContent = type;
                 detailTypes.appendChild(typeEl);
             });
-            
+
             // Set stats
             detailStats.innerHTML = '';
             if (pokemon.stats) {
@@ -1380,10 +1514,10 @@
                     detailStats.appendChild(statEl);
                 }
             }
-            
+
             // Set description
             detailDescription.textContent = pokemon.description;
-            
+
             // Set evolution chain
             evolutionChain.innerHTML = '';
             if (pokemon.evolution && pokemon.evolution.length > 0) {
@@ -1399,7 +1533,7 @@
             } else {
                 evolutionChain.innerHTML = '<p class="detail-text">This Pokémon does not evolve.</p>';
             }
-            
+
             // Set abilities
             abilities.innerHTML = '';
             if (pokemon.abilities && pokemon.abilities.length > 0) {
@@ -1410,7 +1544,7 @@
                     abilities.appendChild(abilityEl);
                 });
             }
-            
+
             // Set moves
             movesList.innerHTML = '';
             if (pokemon.moves && pokemon.moves.length > 0) {
@@ -1421,7 +1555,7 @@
                     movesList.appendChild(moveEl);
                 });
             }
-            
+
             // Show modal
             detailModal.classList.add('active');
         }
@@ -1431,7 +1565,7 @@
             if (type === 'all') {
                 return allPokemon;
             }
-            return allPokemon.filter(pokemon => 
+            return allPokemon.filter(pokemon =>
                 pokemon.types.some(t => t.toLowerCase() === type)
             );
         }
@@ -1448,7 +1582,7 @@
         function searchPokemon(query) {
             if (!query) return allPokemon;
             const lowerQuery = query.toLowerCase();
-            return allPokemon.filter(pokemon => 
+            return allPokemon.filter(pokemon =>
                 pokemon.name.toLowerCase().includes(lowerQuery) ||
                 pokemon.id.toString().includes(lowerQuery)
             );
@@ -1473,19 +1607,19 @@
         // Update filtered Pokémon based on current filters
         function updateFilteredPokemon() {
             let filtered = allPokemon;
-            
+
             // Apply type filter
             if (currentFilter !== 'all') {
                 filtered = filterPokemonByType(currentFilter);
             }
-            
+
             // Apply generation filter
             if (currentGen !== 'all') {
-                filtered = filtered.filter(pokemon => 
+                filtered = filtered.filter(pokemon =>
                     filterPokemonByGen(currentGen).includes(pokemon)
                 );
             }
-            
+
             // Reset to first page
             currentPage = 1;
             renderPokemon(filtered);
@@ -1538,7 +1672,7 @@
 
         // Initial render
         renderPokemon(allPokemon);
-        
+
         // Add cyberpunk sound effects for interactions
         document.addEventListener('click', () => {
             const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYyTl5qdoKOlqKusr7O2uby/wcTFx8nLzc/Q0dPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/');
@@ -1547,4 +1681,5 @@
         });
     </script>
 </body>
+
 </html>
