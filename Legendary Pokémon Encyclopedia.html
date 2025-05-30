@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPunkémon | Legendary Encyclopedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-pink: #ff00ff;
+            --neon-purple: #bc13fe;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a16;
+            --darker-bg: #050510;
+            --grid-color: rgba(11, 173, 255, 0.05);
+            --card-bg: rgba(10, 15, 30, 0.85);
+            --glow-blue: 0 0 15px rgba(0, 255, 255, 0.7);
+            --glow-pink: 0 0 15px rgba(255, 0, 255, 0.7);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--dark-bg);
+            color: #e0e0ff;
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cyberpunk grid background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -2;
+        }
+
+        /* Scanline effect */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 255, 255, 0.05) 0px 0px, rgba(0, 0, 0, 0.2) 0px 0px);
+            background-size: 100% 3px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.4;
+            animation: scan 8s linear infinite;
+        }
+
+        /* Terminal glow */
+        .terminal-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Cyberpunk header */
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(5, 5, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: var(--glow-blue), inset var(--glow-blue);
+            animation: pulse 3s infinite alternate;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                transparent, 
+                var(--neon-blue), 
+                transparent
+            );
+            border-radius: 50%;
+            animation: rotate 5s linear infinite;
+        }
+
+        .logo i {
+            font-size: 60px;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            color: transparent;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-pink), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #a0a0ff;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        /* Interface elements */
+        .interface {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: var(--glow-blue), 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 18px 25px 18px 60px;
+            border-radius: 50px;
+            border: 2px solid var(--neon-blue);
+            background: rgba(0, 20, 30, 0.8);
+            color: var(--neon-blue);
+            font-size: 1.1rem;
+            font-family: 'Exo 2', sans-serif;
+            box-shadow: var(--glow-blue);
+            transition: var(--transition);
+            letter-spacing: 1px;
+        }
+
+        #search:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: var(--glow-pink);
+        }
+
+        #search::placeholder {
+            color: rgba(0, 255, 255, 0.6);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: var(--glow-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(0, 255, 255, 0.15);
+            color: white;
+            border-color: var(--neon-pink);
+            box-shadow: var(--glow-pink);
+            transform: translateY(-3px);
+        }
+
+        .filter-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Cyberpunk Pokémon grid */
+        .pokemon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .pokemon-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .pokemon-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+            pointer-events: none;
+        }
+
+        .pokemon-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5), 0 0 60px rgba(255, 0, 255, 0.3);
+            border-color: var(--neon-pink);
+        }
+
+        .card-header {
+            padding: 20px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 10, 20, 0.6);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .pokemon-id {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .pokemon-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .pokemon-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.5));
+        }
+
+        .pokemon-image::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--neon-blue) 0%, transparent 60%);
+            opacity: 0.3;
+            border-radius: 50%;
+            animation: pulse 3s infinite alternate;
+        }
+
+        .pokemon-image img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .pokemon-card:hover .pokemon-image img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+        }
+
+        .pokemon-types {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .type {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid;
+            box-shadow: 0 0 10px;
+        }
+
+        .pokemon-lore {
+            padding: 20px;
+            background: rgba(0, 5, 15, 0.6);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #c0c0ff;
+        }
+
+        /* Type colors with cyberpunk neon */
+        .electric { color: var(--neon-green); border-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+        .water { color: var(--neon-blue); border-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+        .fire { color: #ff3300; border-color: #ff3300; box-shadow: 0 0 10px #ff3300; }
+        .ice { color: #00ffff; border-color: #00ffff; box-shadow: 0 0 10px #00ffff; }
+        .flying { color: #bc13fe; border-color: #bc13fe; box-shadow: 0 0 10px #bc13fe; }
+        .psychic { color: #ff00ff; border-color: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
+        .grass { color: #39ff14; border-color: #39ff14; box-shadow: 0 0 10px #39ff14; }
+        .ghost { color: #8a2be2; border-color: #8a2be2; box-shadow: 0 0 10px #8a2be2; }
+        .dragon { color: #ff4500; border-color: #ff4500; box-shadow: 0 0 10px #ff4500; }
+        .dark { color: #4b0082; border-color: #4b0082; box-shadow: 0 0 10px #4b0082; }
+        .steel { color: #b0c4de; border-color: #b0c4de; box-shadow: 0 0 10px #b0c4de; }
+        .fairy { color: #ff69b4; border-color: #ff69b4; box-shadow: 0 0 10px #ff69b4; }
+        .fighting { color: #ff4500; border-color: #ff4500; box-shadow: 0 0 10px #ff4500; }
+        .rock { color: #cd853f; border-color: #cd853f; box-shadow: 0 0 10px #cd853f; }
+        .ground { color: #d2b48c; border-color: #d2b48c; box-shadow: 0 0 10px #d2b48c; }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2rem;
+            color: var(--neon-pink);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes scan {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 100vh; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Glitch effect on hover */
+        .pokemon-card:hover .pokemon-name {
+            animation: glitch 0.5s infinite;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .pokemon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .filters {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .logo i {
+                font-size: 40px;
+            }
+            
+            .pokemon-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="terminal-glow"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-dragon"></i>
+            </div>
+            <h1>CyberPunkémon</h1>
+            <p class="subtitle">Neural interface activated. Accessing encrypted legendary Pokémon database. Decrypting files...</p>
+            
+            <div class="interface">
+                <div class="search-container">
+                    <i class="fas fa-terminal search-icon"></i>
+                    <input type="text" id="search" placeholder="ENTER SEARCH QUERY...">
+                </div>
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-globe"></i> All Systems
+                    </button>
+                    <button class="filter-btn" data-filter="gen1">
+                        <i class="fas fa-microchip"></i> Gen 1
+                    </button>
+                    <button class="filter-btn" data-filter="gen2">
+                        <i class="fas fa-bolt"></i> Gen 2
+                    </button>
+                    <button class="filter-btn" data-filter="gen3">
+                        <i class="fas fa-cogs"></i> Gen 3
+                    </button>
+                    <button class="filter-btn" data-filter="gen4">
+                        <i class="fas fa-rocket"></i> Gen 4
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="pokemon-grid" id="pokemon-container">
+                <!-- Pokémon cards will be generated here -->
+            </div>
+        </main>
+        
+        <footer>
+            <p>SYSTEM STATUS: ONLINE | CYBERPUNKÉMON DATABASE v2.3.7 | © 2077 NEOTOKYO NETWORKS</p>
+        </footer>
+    </div>
+
+    <script>
+        // Legendary Pokémon data
+        const legendaryPokemon = [
+            {
+                id: 144,
+                name: "Articuno",
+                types: ["Ice", "Flying"],
+                lore: "A legendary bird Pokémon that can control ice. The flapping of its wings chills the air. As a result, it is said that when this Pokémon flies, snow will fall.",
+                generation: 1,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png"
+            },
+            {
+                id: 145,
+                name: "Zapdos",
+                types: ["Electric", "Flying"],
+                lore: "A legendary bird Pokémon that is said to appear from clouds while dropping enormous lightning bolts. It fires powerful electric bolts from its wings.",
+                generation: 1,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png"
+            },
+            {
+                id: 146,
+                name: "Moltres",
+                types: ["Fire", "Flying"],
+                lore: "Known as the legendary bird of fire. Every time it flaps its wings, it creates brilliant, dazzling flames. It is said to bring early spring to the lands it visits.",
+                generation: 1,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png"
+            },
+            {
+                id: 150,
+                name: "Mewtwo",
+                types: ["Psychic"],
+                lore: "Created by recombining Mew's genes, it's said to have the most savage heart among Pokémon. It has incredible psychic powers and intelligence.",
+                generation: 1,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
+            },
+            {
+                id: 151,
+                name: "Mew",
+                types: ["Psychic"],
+                lore: "A mythical Pokémon of which little is known. It's said to possess the genetic composition of all Pokémon, giving it the ability to learn any move.",
+                generation: 1,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png"
+            },
+            {
+                id: 243,
+                name: "Raikou",
+                types: ["Electric"],
+                lore: "This Pokémon races across the land while barking a cry that sounds like crashing thunder. It is said to have fallen with lightning.",
+                generation: 2,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/243.png"
+            },
+            {
+                id: 244,
+                name: "Entei",
+                types: ["Fire"],
+                lore: "A Pokémon that races across the land. It is said that one is born every time a new volcano appears. It embodies the passion of magma.",
+                generation: 2,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/244.png"
+            },
+            {
+                id: 245,
+                name: "Suicune",
+                types: ["Water"],
+                lore: "Said to be the reincarnation of north winds, it can instantly purify filthy, murky water. It races across the land with grace.",
+                generation: 2,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/245.png"
+            },
+            {
+                id: 249,
+                name: "Lugia",
+                types: ["Psychic", "Flying"],
+                lore: "It is said that a light flutter of its wings can cause winds powerful enough to tear down buildings. It spends most of its time deep on the ocean floor.",
+                generation: 2,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png"
+            },
+            {
+                id: 250,
+                name: "Ho-Oh",
+                types: ["Fire", "Flying"],
+                lore: "Legends claim this Pokémon flies the world's skies continuously on its magnificent seven-colored wings. It is said to bring eternal happiness.",
+                generation: 2,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/250.png"
+            },
+            {
+                id: 251,
+                name: "Celebi",
+                types: ["Psychic", "Grass"],
+                lore: "This Pokémon came from the future by crossing over time. It is thought that so long as Celebi appears, a bright and shining future awaits us.",
+                generation: 2,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/251.png"
+            },
+            {
+                id: 377,
+                name: "Regirock",
+                types: ["Rock"],
+                lore: "Its entire body is made of rock. If any part chips off in battle, it attaches rocks to repair itself. It sealed itself away long ago.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/377.png"
+            },
+            {
+                id: 378,
+                name: "Regice",
+                types: ["Ice"],
+                lore: "Its body is made of Antarctic ice. It can control frigid air of -328°F. It sleeps in buried ice from the ice age.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/378.png"
+            },
+            {
+                id: 379,
+                name: "Registeel",
+                types: ["Steel"],
+                lore: "Its body is harder than any kind of metal. Its body is apparently hollow with no internal organs. It was sealed away by people long ago.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/379.png"
+            },
+            {
+                id: 380,
+                name: "Latias",
+                types: ["Dragon", "Psychic"],
+                lore: "It communicates using telepathy. Its body is covered with down that refracts light to make it invisible. It is highly intelligent and capable of understanding human speech.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/380.png"
+            },
+            {
+                id: 381,
+                name: "Latios",
+                types: ["Dragon", "Psychic"],
+                lore: "It understands human speech and is highly intelligent. It can fold its forelegs to fly faster than a jet plane. It is very protective of its territory.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/381.png"
+            },
+            {
+                id: 382,
+                name: "Kyogre",
+                types: ["Water"],
+                lore: "It is said to have expanded the seas by causing downpours that lasted for 40 days and 40 nights. It is the legendary master of the sea.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/382.png"
+            },
+            {
+                id: 383,
+                name: "Groudon",
+                types: ["Ground"],
+                lore: "Said to have expanded the lands by evaporating water with raging heat. It sleeps underground in magma chambers and causes volcanic eruptions upon awakening.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/383.png"
+            },
+            {
+                id: 384,
+                name: "Rayquaza",
+                types: ["Dragon", "Flying"],
+                lore: "It flies forever through the ozone layer, consuming meteoroids for sustenance. It descended to stop the fight between Kyogre and Groudon.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
+            },
+            {
+                id: 385,
+                name: "Jirachi",
+                types: ["Steel", "Psychic"],
+                lore: "It is said to make true any wish written on the notes attached to its head when it awakens. It sleeps for a thousand years at a time.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/385.png"
+            },
+            {
+                id: 386,
+                name: "Deoxys",
+                types: ["Psychic"],
+                lore: "An alien virus that fell to earth on a meteor underwent a DNA mutation to become this Pokémon. It has four different Formes.",
+                generation: 3,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/386.png"
+            },
+            {
+                id: 480,
+                name: "Uxie",
+                types: ["Psychic"],
+                lore: "Known as 'The Being of Knowledge.' It is said that it can wipe out the memory of those who see its eyes. It gave humans the intelligence to solve problems.",
+                generation: 4,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/480.png"
+            },
+            {
+                id: 481,
+                name: "Mesprit",
+                types: ["Psychic"],
+                lore: "Known as 'The Being of Emotion.' It taught humans the nobility of sorrow, pain, and joy. It can manipulate emotions at will.",
+                generation: 4,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/481.png"
+            },
+            {
+                id: 482,
+                name: "Azelf",
+                types: ["Psychic"],
+                lore: "Known as 'The Being of Willpower.' It taught humans the determination to do anything. It can make others act as it wills.",
+                generation: 4,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/482.png"
+            },
+            {
+                id: 483,
+                name: "Dialga",
+                types: ["Steel", "Dragon"],
+                lore: "A legendary Pokémon of Sinnoh. It is said that time flows when Dialga's heart beats. It has the power to control time.",
+                generation: 4,
+                image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png"
+            }
+        ];
+
+        // DOM elements
+        const pokemonContainer = document.getElementById('pokemon-container');
+        const searchInput = document.getElementById('search');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Render Pokémon cards
+        function renderPokemon(pokemonList) {
+            pokemonContainer.innerHTML = '';
+            
+            if (pokemonList.length === 0) {
+                pokemonContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>ACCESS DENIED</h3>
+                        <p>NO MATCHING ENTITIES FOUND IN DATABASE</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            pokemonList.forEach(pokemon => {
+                const card = document.createElement('div');
+                card.className = 'pokemon-card';
+                card.dataset.generation = `gen${pokemon.generation}`;
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="pokemon-id">#${String(pokemon.id).padStart(3, '0')}</span>
+                    </div>
+                    <h2 class="pokemon-name">${pokemon.name}</h2>
+                    <div class="pokemon-image">
+                        <img src="${pokemon.image}" alt="${pokemon.name}">
+                    </div>
+                    <div class="pokemon-types">
+                        ${pokemon.types.map(type => `<span class="type ${type.toLowerCase()}">${type}</span>`).join('')}
+                    </div>
+                    <div class="pokemon-lore">
+                        <p>${pokemon.lore}</p>
+                    </div>
+                `;
+                
+                pokemonContainer.appendChild(card);
+            });
+        }
+
+        // Filter Pokémon by generation
+        function filterPokemon(generation) {
+            if (generation === 'all') {
+                return legendaryPokemon;
+            }
+            const genNum = parseInt(generation.replace('gen', ''));
+            return legendaryPokemon.filter(pokemon => pokemon.generation === genNum);
+        }
+
+        // Search Pokémon by name
+        function searchPokemon(query) {
+            if (!query) return legendaryPokemon;
+            const lowerQuery = query.toLowerCase();
+            return legendaryPokemon.filter(pokemon => 
+                pokemon.name.toLowerCase().includes(lowerQuery) ||
+                pokemon.types.some(type => type.toLowerCase().includes(lowerQuery)) ||
+                pokemon.lore.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        // Apply active filter class
+        function setActiveFilter(activeButton) {
+            filterButtons.forEach(button => button.classList.remove('active'));
+            activeButton.classList.add('active');
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value;
+            const filteredPokemon = searchPokemon(query);
+            renderPokemon(filteredPokemon);
+        });
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                setActiveFilter(button);
+                
+                if (filter === 'all') {
+                    renderPokemon(legendaryPokemon);
+                } else {
+                    const filteredPokemon = filterPokemon(filter);
+                    renderPokemon(filteredPokemon);
+                }
+                
+                // Reset search
+                searchInput.value = '';
+            });
+        });
+
+        // Initial render
+        renderPokemon(legendaryPokemon);
+        
+        // Add cyberpunk sound effects for interactions
+        document.addEventListener('click', () => {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYyTl5qdoKOlqKusr7O2uby/wcTFx8nLzc/Q0dPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/');
+            audio.volume = 0.1;
+            audio.play().catch(e => console.log("Audio play failed:", e));
+        });
+    </script>
+</body>
+</html>
