@@ -1,6 +1,6 @@
 {
-  "name": "cyberpunkedex",
-  "short_name": "cyberpunkedex",
+  "name": "CyberPunkédex",
+  "short_name": "CyberPunkédex",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
