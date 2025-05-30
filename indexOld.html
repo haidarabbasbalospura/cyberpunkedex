@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberPunkédex | Ultimate Pokémon Encyclopedia</title>
+    <title>CyberPunkédex | Complete Pokémon Encyclopedia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Cyberpunkedex" />
+    <link rel="manifest" href="/site.webmanifest" />
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
@@ -39,7 +44,6 @@
             padding: 0;
             overflow-x: hidden;
             position: relative;
-            overscroll-behavior: none;
         }
 
         /* Cyberpunk grid background */
@@ -140,7 +144,7 @@
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: 3.5rem;
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 10px;
@@ -154,33 +158,30 @@
         }
 
         .subtitle {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto 20px;
             color: #a0a0ff;
             line-height: 1.6;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
             font-weight: 300;
-            padding: 0 15px;
         }
 
         .stats-bar {
             display: flex;
             justify-content: center;
-            gap: clamp(10px, 3vw, 30px);
+            gap: 30px;
             margin-bottom: 20px;
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             color: var(--neon-green);
             text-shadow: 0 0 10px var(--neon-green);
-            flex-wrap: wrap;
         }
 
         .stat-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            white-space: nowrap;
         }
 
         /* Interface elements */
@@ -204,13 +205,12 @@
 
         #search {
             width: 100%;
-            padding: clamp(12px, 3vw, 16px) clamp(15px, 3vw, 25px);
-            padding-left: clamp(50px, 10vw, 60px);
+            padding: 16px 25px 16px 60px;
             border-radius: 50px;
             border: 2px solid var(--neon-blue);
             background: rgba(0, 20, 30, 0.8);
             color: var(--neon-blue);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             font-family: 'Exo 2', sans-serif;
             box-shadow: var(--glow-blue);
             transition: var(--transition);
@@ -225,26 +225,25 @@
 
         #search::placeholder {
             color: rgba(0, 255, 255, 0.6);
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
 
         .search-icon {
             position: absolute;
-            left: clamp(15px, 3vw, 25px);
+            left: 25px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--neon-blue);
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
         }
 
         .filters {
             display: flex;
-            gap: clamp(5px, 1vw, 10px);
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            padding: clamp(8px, 2vw, 12px) clamp(10px, 3vw, 20px);
+            padding: 12px 20px;
             border-radius: 8px;
             background: transparent;
             border: 2px solid var(--neon-blue);
@@ -255,7 +254,7 @@
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-size: 0.9rem;
             box-shadow: var(--glow-blue);
             position: relative;
             overflow: hidden;
@@ -287,21 +286,21 @@
         }
 
         .filter-btn i {
-            margin-right: clamp(4px, 1vw, 8px);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
         /* Generation selection */
         .generation-selector {
             display: flex;
             justify-content: center;
-            gap: clamp(5px, 1vw, 10px);
+            gap: 10px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
         .gen-btn {
-            padding: clamp(6px, 2vw, 10px) clamp(10px, 3vw, 25px);
+            padding: 10px 25px;
             border-radius: 8px;
             background: rgba(0, 30, 60, 0.7);
             border: 2px solid var(--neon-purple);
@@ -311,7 +310,7 @@
             font-weight: 600;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
-            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-size: 0.9rem;
             box-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
         }
 
@@ -326,9 +325,9 @@
         /* Cyberpunk Pokémon grid */
         .pokemon-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 20vw, 200px), 1fr));
-            gap: clamp(10px, 2vw, 20px);
-            padding: clamp(10px, 2vw, 20px);
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
 
         .pokemon-card {
@@ -364,7 +363,7 @@
         }
 
         .card-header {
-            padding: clamp(10px, 2vw, 15px) clamp(10px, 2vw, 15px) clamp(5px, 1vw, 10px);
+            padding: 15px 15px 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -375,9 +374,9 @@
         .pokemon-id {
             background: rgba(0, 255, 255, 0.1);
             color: var(--neon-blue);
-            padding: clamp(3px, 1vw, 4px) clamp(8px, 2vw, 12px);
+            padding: 4px 12px;
             border-radius: 15px;
-            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            font-size: 0.85rem;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -385,20 +384,20 @@
 
         .pokemon-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1rem, 3.5vw, 1.4rem);
+            font-size: 1.4rem;
             font-weight: 700;
-            margin: clamp(5px, 2vw, 10px) 0;
+            margin: 10px 0;
             color: white;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 0 0 10px var(--neon-blue);
-            padding: 0 clamp(5px, 2vw, 10px);
+            padding: 0 10px;
         }
 
         .pokemon-image {
-            width: clamp(80px, 20vw, 120px);
-            height: clamp(80px, 20vw, 120px);
+            width: 120px;
+            height: 120px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -433,16 +432,16 @@
         .pokemon-types {
             display: flex;
             justify-content: center;
-            gap: clamp(5px, 1.5vw, 8px);
-            margin: clamp(10px, 2vw, 15px) 0;
+            gap: 8px;
+            margin: 15px 0;
             flex-wrap: wrap;
-            padding: 0 clamp(5px, 2vw, 10px);
+            padding: 0 10px;
         }
 
         .type {
-            padding: clamp(4px, 1.5vw, 6px) clamp(10px, 3vw, 15px);
+            padding: 6px 15px;
             border-radius: 20px;
-            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -453,13 +452,13 @@
         }
 
         .pokemon-footer {
-            padding: clamp(5px, 1.5vw, 10px) clamp(10px, 2vw, 15px);
+            padding: 10px 15px;
             background: rgba(0, 5, 15, 0.6);
             border-top: 1px solid rgba(0, 255, 255, 0.2);
             margin-top: auto;
             display: flex;
             justify-content: space-between;
-            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            font-size: 0.9rem;
             color: #c0c0ff;
         }
 
@@ -472,9 +471,9 @@
         }
 
         .stat-label {
-            font-size: clamp(0.6rem, 2vw, 0.7rem);
+            font-size: 0.7rem;
             color: var(--neon-blue);
-            margin-bottom: clamp(1px, 0.5vw, 3px);
+            margin-bottom: 3px;
         }
 
         /* Type colors with cyberpunk neon */
@@ -602,7 +601,6 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease;
-            overflow: hidden;
         }
 
         .detail-modal.active {
@@ -621,7 +619,6 @@
             box-shadow: 0 0 50px rgba(188, 19, 254, 0.7);
             position: relative;
             padding: 30px;
-            scroll-behavior: smooth;
         }
 
         .close-btn {
@@ -681,7 +678,7 @@
 
         .detail-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             margin-bottom: 15px;
             color: white;
             text-transform: uppercase;
@@ -691,7 +688,7 @@
 
         .detail-id {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            font-size: 1.5rem;
             color: var(--neon-blue);
             margin-bottom: 20px;
         }
@@ -700,13 +697,12 @@
             display: flex;
             gap: 15px;
             margin-bottom: 25px;
-            flex-wrap: wrap;
         }
 
         .detail-type {
-            padding: clamp(8px, 1.5vw, 10px) clamp(15px, 3vw, 25px);
+            padding: 10px 25px;
             border-radius: 30px;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -733,7 +729,7 @@
 
         .stat-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            font-size: 1.8rem;
             color: var(--neon-green);
             text-shadow: 0 0 10px var(--neon-green);
             margin: 10px 0;
@@ -741,7 +737,7 @@
 
         .stat-name {
             color: var(--neon-blue);
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -752,7 +748,7 @@
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            font-size: 1.5rem;
             color: var(--neon-purple);
             text-shadow: 0 0 10px var(--neon-purple);
             margin-bottom: 15px;
@@ -764,13 +760,12 @@
             line-height: 1.6;
             color: #c0c0ff;
             margin-bottom: 15px;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .evolution-chain {
             display: flex;
             justify-content: center;
-            gap: clamp(15px, 3vw, 30px);
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -779,10 +774,10 @@
             flex-direction: column;
             align-items: center;
             background: rgba(0, 10, 30, 0.5);
-            padding: clamp(10px, 2vw, 20px);
+            padding: 20px;
             border-radius: 15px;
             border: 1px solid var(--neon-blue);
-            min-width: clamp(100px, 20vw, 150px);
+            min-width: 150px;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -792,16 +787,11 @@
             box-shadow: 0 0 20px var(--neon-blue);
         }
 
-        .evolution-item img {
-            max-width: clamp(60px, 15vw, 80px);
-        }
-
         .evolution-name {
             margin-top: 10px;
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
             color: white;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
 
         .moves-list {
@@ -814,8 +804,8 @@
             background: rgba(0, 30, 60, 0.7);
             border: 1px solid var(--neon-green);
             border-radius: 20px;
-            padding: clamp(5px, 1.5vw, 8px) clamp(10px, 2vw, 15px);
-            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            padding: 8px 15px;
+            font-size: 0.9rem;
             color: var(--neon-green);
             text-shadow: 0 0 5px var(--neon-green);
         }
@@ -824,7 +814,7 @@
             text-align: center;
             padding: 30px 0 20px;
             color: #7f8c8d;
-            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            font-size: 0.9rem;
             margin-top: 30px;
             border-top: 1px solid rgba(0, 255, 255, 0.3);
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
@@ -834,7 +824,7 @@
             grid-column: 1 / -1;
             text-align: center;
             padding: 50px;
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: 1.2rem;
             color: var(--neon-pink);
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
@@ -846,11 +836,10 @@
             justify-content: center;
             gap: 10px;
             margin: 30px 0;
-            flex-wrap: wrap;
         }
 
         .page-btn {
-            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+            padding: 10px 20px;
             border-radius: 8px;
             background: rgba(0, 30, 60, 0.7);
             border: 2px solid var(--neon-blue);
@@ -860,7 +849,7 @@
             font-weight: 600;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-size: 1rem;
         }
 
         .page-btn:hover,
@@ -945,6 +934,29 @@
         }
 
         @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .pokemon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .pokemon-name {
+                font-size: 1.2rem;
+            }
+
+            .pokemon-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
             .detail-header {
                 flex-direction: column;
             }
@@ -952,45 +964,39 @@
             .modal-content {
                 padding: 20px 15px;
             }
-
-            .detail-image {
-                min-width: auto;
-                padding: 20px;
-            }
         }
 
         @media (max-width: 480px) {
-            .interface {
-                padding: 15px;
+            h1 {
+                font-size: 2rem;
             }
 
-            .filter-btn,
-            .gen-btn {
-                width: 100%;
-                justify-content: center;
+            .logo {
+                width: 80px;
+                height: 80px;
             }
 
-            .pagination {
-                gap: 5px;
+            .logo i {
+                font-size: 35px;
             }
 
-            .page-btn {
-                padding: 8px 12px;
+            .pokemon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .filter-btn {
+                padding: 10px 15px;
                 font-size: 0.8rem;
             }
 
-            .detail-modal {
-                padding: 10px;
+            .gen-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
             }
 
-            .modal-content {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .detail-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+            .detail-type {
+                padding: 8px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1078,7 +1084,7 @@
 
     <!-- Detailed View Modal -->
     <div class="detail-modal" id="detail-modal">
-        <div class="modal-content" id="modal-content">
+        <div class="modal-content">
             <button class="close-btn" id="close-modal">
                 <i class="fas fa-times"></i>
             </button>
@@ -1128,9 +1134,10 @@
             </div>
         </div>
     </div>
-
     <script src="allPokemonData.js"></script>
+
     <script>
+
         // Pokémon data for all generations
         // const allPokemon = [
         //     // Generation 1
@@ -1151,11 +1158,11 @@
         //             speed: 90
         //         },
         //         abilities: ["Static", "Lightning Rod"],
-        //         moves: ["Thunder Shock", "Quick Attack", "Thunderbolt", "Iron Tail", "Electro Ball", "Volt Tackle", "Nuzzle", "Spark", "Thunder Wave"],
+        //         moves: ["Thunder Shock", "Quick Attack", "Thunderbolt", "Iron Tail", "Electro Ball"],
         //         evolution: [
-        //             { id: 172, name: "Pichu", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/172.png" },
-        //             { id: 25, name: "Pikachu", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" },
-        //             { id: 26, name: "Raichu", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png" }
+        //             {id: 172, name: "Pichu", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/172.png"},
+        //             {id: 25, name: "Pikachu", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"},
+        //             {id: 26, name: "Raichu", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png"}
         //         ]
         //     },
         //     {
@@ -1175,11 +1182,11 @@
         //             speed: 100
         //         },
         //         abilities: ["Blaze", "Solar Power"],
-        //         moves: ["Flamethrower", "Air Slash", "Dragon Claw", "Fire Blast", "Heat Wave", "Dragon Dance", "Flare Blitz", "Solar Beam", "Earthquake"],
+        //         moves: ["Flamethrower", "Air Slash", "Dragon Claw", "Fire Blast", "Heat Wave"],
         //         evolution: [
-        //             { id: 4, name: "Charmander", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" },
-        //             { id: 5, name: "Charmeleon", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png" },
-        //             { id: 6, name: "Charizard", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" }
+        //             {id: 4, name: "Charmander", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"},
+        //             {id: 5, name: "Charmeleon", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"},
+        //             {id: 6, name: "Charizard", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"}
         //         ]
         //     },
         //     {
@@ -1199,7 +1206,7 @@
         //             speed: 130
         //         },
         //         abilities: ["Pressure", "Unnerve"],
-        //         moves: ["Psychic", "Shadow Ball", "Aura Sphere", "Recover", "Psystrike", "Ice Beam", "Thunderbolt", "Flamethrower", "Calm Mind"],
+        //         moves: ["Psychic", "Shadow Ball", "Aura Sphere", "Recover", "Psystrike"],
         //         evolution: []
         //     },
 
@@ -1221,11 +1228,11 @@
         //             speed: 61
         //         },
         //         abilities: ["Sand Stream", "Unnerve"],
-        //         moves: ["Stone Edge", "Crunch", "Earthquake", "Dark Pulse", "Hyper Beam", "Dragon Dance", "Fire Punch", "Ice Punch", "Thunder Punch"],
+        //         moves: ["Stone Edge", "Crunch", "Earthquake", "Dark Pulse", "Hyper Beam"],
         //         evolution: [
-        //             { id: 246, name: "Larvitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/246.png" },
-        //             { id: 247, name: "Pupitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/247.png" },
-        //             { id: 248, name: "Tyranitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png" }
+        //             {id: 246, name: "Larvitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/246.png"},
+        //             {id: 247, name: "Pupitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/247.png"},
+        //             {id: 248, name: "Tyranitar", image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"}
         //         ]
         //     },
 
@@ -1247,7 +1254,7 @@
         //             speed: 95
         //         },
         //         abilities: ["Air Lock"],
-        //         moves: ["Dragon Ascent", "Outrage", "Hyper Beam", "Extreme Speed", "Dragon Pulse", "Earthquake", "Fire Blast", "Thunder", "Hurricane"],
+        //         moves: ["Dragon Ascent", "Outrage", "Hyper Beam", "Extreme Speed", "Dragon Pulse"],
         //         evolution: []
         //     },
 
@@ -1269,7 +1276,7 @@
         //             speed: 90
         //         },
         //         abilities: ["Pressure", "Telepathy"],
-        //         moves: ["Roar of Time", "Dragon Claw", "Earth Power", "Flash Cannon", "Aura Sphere", "Thunder", "Fire Blast", "Ice Beam", "Stealth Rock"],
+        //         moves: ["Roar of Time", "Dragon Claw", "Earth Power", "Flash Cannon", "Aura Sphere"],
         //         evolution: []
         //     },
 
@@ -1291,7 +1298,7 @@
         //             speed: 95
         //         },
         //         abilities: ["Pressure"],
-        //         moves: ["Ice Burn", "Freeze Shock", "Dragon Pulse", "Ice Beam", "Outrage", "Earth Power", "Flash Cannon", "Shadow Claw", "Stone Edge"],
+        //         moves: ["Ice Burn", "Freeze Shock", "Dragon Pulse", "Ice Beam", "Outrage"],
         //         evolution: []
         //     },
 
@@ -1313,7 +1320,7 @@
         //             speed: 99
         //         },
         //         abilities: ["Fairy Aura"],
-        //         moves: ["Geomancy", "Moonblast", "Megahorn", "Close Combat", "Focus Blast", "Thunder", "Psychic", "Grass Knot", "Aromatherapy"],
+        //         moves: ["Geomancy", "Moonblast", "Megahorn", "Close Combat", "Focus Blast"],
         //         evolution: []
         //     },
 
@@ -1335,7 +1342,7 @@
         //             speed: 79
         //         },
         //         abilities: ["Prism Armor"],
-        //         moves: ["Prismatic Laser", "Photon Geyser", "Power Gem", "Stealth Rock", "Heat Wave", "Earthquake", "Dark Pulse", "Calm Mind", "Moonlight"],
+        //         moves: ["Prismatic Laser", "Photon Geyser", "Power Gem", "Stealth Rock", "Heat Wave"],
         //         evolution: []
         //     },
 
@@ -1357,7 +1364,7 @@
         //             speed: 138
         //         },
         //         abilities: ["Intrepid Sword"],
-        //         moves: ["Behemoth Blade", "Play Rough", "Sacred Sword", "Iron Head", "Swords Dance", "Close Combat", "Wild Charge", "Psychic Fangs", "Crunch"],
+        //         moves: ["Behemoth Blade", "Play Rough", "Sacred Sword", "Iron Head", "Swords Dance"],
         //         evolution: []
         //     },
 
@@ -1379,7 +1386,7 @@
         //             speed: 116
         //         },
         //         abilities: ["Quark Drive"],
-        //         moves: ["Spirit Break", "Close Combat", "Leaf Blade", "Moonblast", "Psycho Cut", "Night Slash", "Thunderbolt", "Ice Punch", "Fire Punch"],
+        //         moves: ["Spirit Break", "Close Combat", "Leaf Blade", "Moonblast", "Psycho Cut"],
         //         evolution: []
         //     }
         // ];
@@ -1393,7 +1400,6 @@
         const nextBtn = document.getElementById('next-btn');
         const detailModal = document.getElementById('detail-modal');
         const closeModal = document.getElementById('close-modal');
-        const modalContent = document.getElementById('modal-content');
 
         // Current filter state
         let currentFilter = 'all';
@@ -1435,7 +1441,7 @@
                     </div>
                     <h2 class="pokemon-name">${pokemon.name}</h2>
                     <div class="pokemon-image">
-                        <img src="${imageUrl}" alt="${pokemon.name}" loading="lazy">
+                        <img src="${imageUrl}" alt="${pokemon.name}">
                     </div>
                     <div class="pokemon-types">
                         ${pokemon.types.map(type => `<span class="type ${type.toLowerCase()}">${type}</span>`).join('')}
@@ -1471,9 +1477,6 @@
 
         // Show detailed view for a Pokémon
         function showPokemonDetail(pokemon) {
-            // Reset modal scroll position
-            modalContent.scrollTop = 0;
-
             const detailImg = document.getElementById('detail-img');
             const detailName = document.getElementById('detail-name');
             const detailId = document.getElementById('detail-id');
@@ -1486,7 +1489,6 @@
 
             // Set basic info
             detailImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
-            detailImg.alt = pokemon.name;
             detailName.textContent = pokemon.name;
             detailId.textContent = `#${String(pokemon.id).padStart(4, '0')}`;
 
@@ -1523,7 +1525,7 @@
                     const evoEl = document.createElement('div');
                     evoEl.className = 'evolution-item';
                     evoEl.innerHTML = `
-                        <img src="${evo.image}" alt="${evo.name}" width="80" loading="lazy">
+                        <img src="${evo.image}" alt="${evo.name}" width="80">
                         <div class="evolution-name">${evo.name}</div>
                     `;
                     evolutionChain.appendChild(evoEl);
@@ -1556,9 +1558,6 @@
 
             // Show modal
             detailModal.classList.add('active');
-
-            // Prevent body scrolling when modal is open
-            document.body.style.overflow = 'hidden';
         }
 
         // Filter Pokémon by type
@@ -1662,14 +1661,12 @@
 
         closeModal.addEventListener('click', () => {
             detailModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
         });
 
         // Close modal when clicking outside
         detailModal.addEventListener('click', (e) => {
             if (e.target === detailModal) {
                 detailModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
             }
         });
 
@@ -1677,13 +1674,10 @@
         renderPokemon(allPokemon);
 
         // Add cyberpunk sound effects for interactions
-        document.addEventListener('click', (e) => {
-            // Only play sound for interactive elements
-            if (e.target.closest('.pokemon-card, .filter-btn, .gen-btn, .page-btn, .close-btn, .evolution-item')) {
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYyTl5qdoKOlqKusr7O2uby/wcTFx8nLzc/Q0dPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/');
-                audio.volume = 0.1;
-                audio.play().catch(e => console.log("Audio play failed:", e));
-            }
+        document.addEventListener('click', () => {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYyTl5qdoKOlqKusr7O2uby/wcTFx8nLzc/Q0dPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/');
+            audio.volume = 0.1;
+            audio.play().catch(e => console.log("Audio play failed:", e));
         });
     </script>
 </body>
